@@ -197,6 +197,10 @@ class QueryBuilderTest extends TestCase
         $users = DB::collection('users')->where('address.country', 'Belgium')->get();
         $this->assertCount(1, $users);
         $this->assertEquals('John Doe', $users[0]['name']);
+         
+        $users = DB::collection('users')->where('address.country', 'Belgium')->where('address.city', 'Ghent')->get();
+        $this->assertCount(1, $users);
+        $this->assertEquals('John Doe', $users[0]['name']);
     }
 
     public function testInArray()
